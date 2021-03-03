@@ -23,7 +23,7 @@ class ProductFactory extends Factory
     {
         return [
             'name'  => $this->faker->word(),
-            'color' => $this->faker->safeColorName,
+            'color' => $this->faker->hexColor,
             'price' => $this->faker->randomFloat(2,100,100000),
         ];
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,13 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
+        // $request->validate([
+        //     'name'  =>  'required|unique:products',
+        //     'color' =>  'required|regex:^#(?:[0-9a-fA-F]{3}){1,2}$^',
+        //     'price' =>  'required|numeric'
+        // ]);
         $product = new Product;
         $product->name = $request->name;
         $product->color = $request->color;
@@ -41,8 +47,13 @@ class ProductController extends Controller
      * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
+        // $request->validate([
+        //     'name'  =>  'required|unique:products',
+        //     'color' =>  'required|regex:^#(?:[0-9a-fA-F]{3}){1,2}$^',
+        //     'price' =>  'required|numeric'
+        // ]);
         $product = Product::find($id);
         $product->name = $request->name;
         $product->color = $request->color;
@@ -60,7 +71,8 @@ class ProductController extends Controller
     public function delete($id)
     {
         $product = Product::find($id);
-        $product->delete;
+        $product->delete();
+        return true;
     }
 
     /**

@@ -17,10 +17,10 @@ class CeatePersonsTable extends Migration
             $table->id();
             $table->string('firstName');
             $table->string('lastName');
-            $table->string('email');
-            $table->string('phone');
-            $table->softDeletes();
+            $table->string('email')->unique();
+            $table->string('phone')->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

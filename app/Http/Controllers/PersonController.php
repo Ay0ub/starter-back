@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PersonRequest;
 use App\Models\Person;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class PersonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PersonRequest $request)
     {
         $person = new Person;
         $person->firstName = $request->firstName;
@@ -42,7 +43,7 @@ class PersonController extends Controller
      * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(PersonRequest $request,$id)
     {
         $person = Person::find($id);
         $person->firstName = $request->firstName;
