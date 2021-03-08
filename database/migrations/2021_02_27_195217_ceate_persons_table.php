@@ -18,7 +18,7 @@ class CeatePersonsTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('email')->unique();
-            $table->string('phone')->unique();
+            $table->string('phone')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
