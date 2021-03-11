@@ -36,7 +36,7 @@ trait HasCRUD
 
     public function update(Request $request, $id)
     {
-        $model = $this->model::find($id);
+        $model = $this->model::findOrFail($id);
         //TODO: mettre le bloc suivant dans un service "save"
         $model->fill($request->all());
         if ($model->validate($model)) {
@@ -49,7 +49,7 @@ trait HasCRUD
 
     public function delete($id)
     {
-        $model = $this->model::find($id);
+        $model = $this->model::findOrFail($id);
         return $model->delete();
     }
 }
