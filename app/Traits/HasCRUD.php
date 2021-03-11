@@ -8,6 +8,10 @@ trait HasCRUD
 {
     public function index(Request $params)
     {
+        //TODO: url with parameters
+        //TODO: integrate pagination
+        //TODO: integrate filter
+        //TODO: integrate sort by
         return $this->model::all();
     }
 
@@ -19,15 +23,28 @@ trait HasCRUD
     public function store(Request $request)
     {
         $model = new $this->model();
-        $model->create($request->all());
-        return $model;
+        //TODO: mettre le bloc suivant dans un service "save"
+        $model->fill($request->all());
+        if($model->validate($model))
+        {
+            $model->save();
+            return $model;
+        }else {
+            return $model->errors();
+        }
     }
 
     public function update(Request $request, $id)
     {
         $model = $this->model::find($id);
-        $model->update($request->all());
-        return $model;
+        //TODO: mettre le bloc suivant dans un service "save"
+        $model->fill($request->all());
+        if ($model->validate($model)) {
+            $model->save();
+            return $model;
+        } else {
+            return $model->errors();
+        }
     }
 
     public function delete($id)
