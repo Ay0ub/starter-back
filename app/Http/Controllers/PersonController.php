@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\HasCRUD;
+use App\Traits\HasCRUDController;
 
 class PersonController extends Controller
 {
-    use HasCRUD;
+    use HasCRUDController;
     protected $model = 'App\Models\Person';
 
 }
