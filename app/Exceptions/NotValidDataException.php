@@ -13,7 +13,7 @@ class NotValidDataException extends Exception
      */
     public function report()
     {
-        return false;
+        
     }
 
     /**
@@ -24,7 +24,7 @@ class NotValidDataException extends Exception
      */
     public function render($request)
     {
-        return 'test';
-        // return false;
+        // return $request;
+        return 'tt';
     }
 }
