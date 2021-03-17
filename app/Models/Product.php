@@ -25,4 +25,9 @@ class Product extends Model
         'price' =>  'required|numeric'
     ];
 
+    public function personss()
+    {
+        return $this->belongsToMany(Person::class);
+    }
+
 }
